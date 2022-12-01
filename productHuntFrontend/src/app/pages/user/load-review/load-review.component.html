@@ -1,0 +1,37 @@
+<div>
+  <div class="ml20 text-center" *ngIf="avgRating != 0; or: totalReviews != 0">
+    <h2>Overall Rating: {{ avgRating }}</h2>
+    <h2>Total reviews: {{ totalReviews }}</h2>
+  </div>
+
+  <mat-card class="mt10 mr20 ml20" *ngFor="let r of reviews">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+
+      <mat-card-title> {{ r.reviewTitle }} </mat-card-title>
+      <mat-card-title>Rating: {{ r.rating }}/5</mat-card-title>
+
+      <mat-card-subtitle>{{ r.product.pName }} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ r.content }}</p>
+    </mat-card-content>
+  </mat-card>
+  <div class="container text-center mt20">
+    <button
+      [routerLink]="'/user-dashboard/add-review/' + pid"
+      mat-raised-button
+      color="accent"
+      class="mb20"
+    >
+      Post Review
+    </button>
+  </div>
+  <div class="ml20 text-center" *ngIf="reviews.length == 0">
+    <mat-card>
+      <mat-card-content>
+        <h1>No reviews yet</h1>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

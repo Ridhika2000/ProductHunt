@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <img src="/assets/reviewsImage.jpg" alt="" class="mt20" />
+    </div>
+    <div class="col-md-5">
+      <mat-card class="mr20 reviewsCard">
+        <h2>Add Review</h2>
+
+        <form
+          (ngSubmit)="addReview()"
+          [formGroup]="myForm"
+          novalidate
+          fxLayout="column wrap"
+          fxLayoutAlign="center center"
+          fxLayoutGap="10px"
+        >
+          <mat-card-content>
+            <mat-form-field appearance="fill" class="w100">
+              <input
+                [(ngModel)]="reviewData.reviewTitle"
+                matInput
+                type="text"
+                placeholder="Enter Title"
+                formControlName="revTitle"
+                id="revTitle"
+              />
+              <mat-hint align="end">Not more then 40 characters long.</mat-hint>
+              <mat-error *ngIf="myError('revTitle', 'required')"
+                >Title is required</mat-error
+              >
+              <mat-error *ngIf="myError('revTitle', 'maxlength')"
+                >Limit exceed(Not allowed more then 40 characters)</mat-error
+              >
+            </mat-form-field>
+          </mat-card-content>
+          <br />
+          <mat-card-content>
+            <mat-form-field appearance="fill" class="w100">
+              <textarea
+                matInput
+                [(ngModel)]="reviewData.content"
+                type="text"
+                placeholder="Enter Content about review"
+                formControlName="revContent"
+                id="revContent"
+                name="revContent"
+                rows="5"
+              ></textarea>
+              <mat-hint align="end"
+                >Not more then 400 characters long.</mat-hint
+              >
+              <mat-error *ngIf="myError('revContent', 'required')"
+                >Content is required</mat-error
+              >
+              <mat-error *ngIf="myError('revContent', 'minlength')"
+                >Should contain atleast 40 characters
+              </mat-error>
+              <mat-error *ngIf="myError('revContent', 'maxlength')"
+                >Limit exceed(Not allowed more then 400 characters)</mat-error
+              >
+            </mat-form-field>
+          </mat-card-content>
+          <br />
+          <mat-card-content>
+            <div class="text-center reviews">
+              <ngx-star-rating
+                [(ngModel)]="reviewData.rating"
+                formControlName="revRating"
+                id="revRating"
+                name="revRating"
+              ></ngx-star-rating>
+
+              <mat-error *ngIf="myError('revRating', 'min')"
+                >Should contain atleast 1 star
+              </mat-error>
+              <mat-error *ngIf="myError('revRating', 'max')"
+                >Limit exceed</mat-error
+              >
+            </div>
+          </mat-card-content>
+          <br />
+          <div class="container text-center mt15">
+            <button
+              type="submit"
+              mat-raised-button
+              color="accent"
+              class="mt20"
+              [disabled]="!myForm.valid"
+            >
+              Post
+            </button>
+            <button
+              mat-raised-button
+              color="accent"
+              routerLink="/user-dashboard/0/"
+              class="ml20"
+            >
+              Back
+            </button>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

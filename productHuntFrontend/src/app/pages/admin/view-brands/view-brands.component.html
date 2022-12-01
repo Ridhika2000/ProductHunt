@@ -1,0 +1,29 @@
+<mat-card>
+  <h1>All Brands</h1>
+  <mat-list>
+    <mat-list-item *ngFor="let b of brands">
+      <mat-icon mat-list-icon>category</mat-icon>
+      <div mat-line>{{ b.title }}</div>
+      <div>
+        <button mat-flat-button color="accent" (click)="deleteBrand(b.bid)">
+          Delete
+        </button>
+        <button
+          [routerLink]="'/admin/brand/' + b.bid"
+          mat-flat-button
+          color="accent"
+          class="ml20"
+        >
+          Update
+        </button>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+  <div class="container text-center mt20">
+    <button routerLink="/admin/add-brand/" mat-raised-button color="accent">
+      Add New Brand
+    </button>
+  </div>
+</mat-card>

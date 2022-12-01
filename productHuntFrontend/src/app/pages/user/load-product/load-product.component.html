@@ -1,0 +1,53 @@
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <h2 class="mt20">Available Products</h2>
+    <mat-form-field appearance="fill" class="w70">
+      <mat-label>Search Product</mat-label>
+      <input
+        matInput
+        (keyup)="searchProduct($event)"
+        placeholder="Search product by name,code,brand"
+      />
+    </mat-form-field>
+    <div class="row mt20" *ngIf="products">
+      <div class="col-md-4" *ngFor="let p of products">
+        <mat-card class="mb20">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title> {{ p.pName }} ({{ p.pCode }}) </mat-card-title>
+            <mat-card-subtitle>
+              {{ p.brand.title }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="truncate">{{ p.description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button
+              mat-flat-button
+              color="accent"
+              [routerLink]="'/user-dashboard/show-review/' + p.pId"
+            >
+              All Reviews
+            </button>
+            <button
+              mat-flat-button
+              color="accent"
+              [routerLink]="'/user-dashboard/add-review/' + p.pId"
+              class="ml20"
+            >
+              Add Review
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-12" *ngIf="products.length == 0">
+        <mat-card>
+          <mat-card-content>
+            <h1>No products in this brand</h1>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <mat-card>
+          <div class="container text-center">
+            <img src="../../../assets/logo.png" />
+          </div>
+          <h1 class="text-center">Register Here !!</h1>
+          <div>
+            <form [formGroup]="registerForm" (ngSubmit)="formSubmit()">
+              <!-- username field -->
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>User Name</mat-label>
+                <input
+                  matInput
+                  formControlName="username"
+                  [(ngModel)]="user.username"
+                  name="username"
+                  placeholder="Enter here"
+                />
+                <mat-error
+                  *ngIf="registerForm.get('username').hasError('required')"
+                  >User name is required</mat-error
+                >
+              </mat-form-field>
+
+              <!-- password field -->
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>User Password</mat-label>
+                <input
+                  formControlName="password"
+                  [(ngModel)]="user.password"
+                  name="password"
+                  type="password"
+                  matInput
+                  placeholder="Enter here"
+                />
+                <mat-error *ngIf="registerForm.value.password"
+                  >Password must be a combination of lower-case, upper-case,
+                  numbers and at least 9 characters long</mat-error
+                >
+              </mat-form-field>
+
+              <!-- first name -->
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input
+                  matInput
+                  [(ngModel)]="user.firstName"
+                  formControlName="firstName"
+                  name="firstName"
+                  placeholder="Enter here"
+                />
+                <mat-error
+                  *ngIf="registerForm.get('firstName').hasError('required')"
+                  >First name is required</mat-error
+                >
+              </mat-form-field>
+
+              <!-- last name -->
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input
+                  matInput
+                  formControlName="lastName"
+                  [(ngModel)]="user.lastName"
+                  name="lastName"
+                  placeholder="Enter here"
+                />
+                <mat-error
+                  *ngIf="registerForm.get('lastName').hasError('required')"
+                  >Last name is required</mat-error
+                >
+              </mat-form-field>
+
+              <!-- email -->
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email Address</mat-label>
+                <input
+                  matInput
+                  formControlName="email"
+                  [(ngModel)]="user.email"
+                  name="email"
+                  type="email"
+                  placeholder="Enter here"
+                />
+                <mat-error
+                  *ngIf="registerForm.get('email').hasError('required')"
+                  >Email is required</mat-error
+                >
+              </mat-form-field>
+
+              <!-- phone number -->
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input
+                  matInput
+                  formControlName="phone"
+                  [(ngModel)]="user.phone"
+                  name="phone"
+                  type="number"
+                  placeholder="Enter here"
+                />
+                <mat-error *ngIf="registerForm.value.Phone"
+                  >Provide 10 digit phone number</mat-error
+                >
+              </mat-form-field>
+
+              <div class="container text-center">
+                <button
+                  type="submit"
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!registerForm.valid"
+                >
+                  Register
+                </button>
+                <button
+                  style="margin-left: 20px"
+                  mat-raised-button
+                  color="accent"
+                  onclick="window.location.reload()"
+                >
+                  Clear
+                </button>
+              </div>
+            </form>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

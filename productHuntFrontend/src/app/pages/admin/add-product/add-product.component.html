@@ -1,0 +1,65 @@
+<mat-card>
+  <h1>Add New Product</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form (ngSubmit)="addProduct()">
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Enter Name</mat-label>
+            <input
+              [(ngModel)]="productData.pName"
+              type="text"
+              name="productName"
+              placeholder="Enter here"
+              matInput
+            />
+          </mat-form-field>
+
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Enter Code</mat-label>
+            <input
+              [(ngModel)]="productData.pCode"
+              type="text"
+              name="productCode"
+              placeholder="Enter here"
+              matInput
+            />
+          </mat-form-field>
+
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Enter Description</mat-label>
+            <textarea
+              [(ngModel)]="productData.description"
+              type="text"
+              name="pDescription"
+              placeholder="Enter here"
+              matInput
+              rows="5"
+            ></textarea>
+          </mat-form-field>
+          <mat-slide-toggle
+            name="active"
+            [(ngModel)]="productData.active"
+            class="mt20"
+          >
+            Publish Status
+          </mat-slide-toggle>
+          <br />
+          <mat-form-field appearance="fill" class="mt20 w100">
+            <mat-label>Brands</mat-label>
+            <mat-select name="brand" [(ngModel)]="productData.brand.bid">
+              <mat-option *ngFor="let brand of brands" [value]="brand.bid">
+                {{ brand.title }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="container text-center">
+            <button type="submit" mat-raised-button color="accent">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<!-- {{ productData | json }} -->

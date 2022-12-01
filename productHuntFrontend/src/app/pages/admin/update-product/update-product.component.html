@@ -1,0 +1,67 @@
+<mat-card>
+  <h1>Update Product</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form *ngIf="product" (ngSubmit)="updateData()">
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Enter Name</mat-label>
+            <input
+              [(ngModel)]="product.pName"
+              type="text"
+              name="name"
+              placeholder="Enter here"
+              matInput
+              required
+            />
+          </mat-form-field>
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Enter Code</mat-label>
+            <input
+              [(ngModel)]="product.pCode"
+              type="text"
+              name="code"
+              placeholder="Enter here"
+              matInput
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Enter Description</mat-label>
+            <textarea
+              [(ngModel)]="product.description"
+              type="text"
+              name="description"
+              placeholder="Enter here"
+              matInput
+              rows="5"
+            ></textarea>
+          </mat-form-field>
+          <mat-slide-toggle
+            name="active"
+            [(ngModel)]="product.active"
+            class="mt20"
+          >
+            Publish Status
+          </mat-slide-toggle>
+          <br />
+          <mat-form-field appearance="fill" class="mt20 w100">
+            <mat-label>Brands</mat-label>
+            <mat-select name="brand" [(ngModel)]="product.brand.bid">
+              <mat-option *ngFor="let brand of brands" [value]="brand.bid">
+                {{ brand.title }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="container text-center">
+            <button type="submit" mat-raised-button color="accent">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<!-- {{ product | json }} -->

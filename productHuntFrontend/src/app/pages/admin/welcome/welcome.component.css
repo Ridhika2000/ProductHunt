@@ -1,0 +1,42 @@
+.banner{
+	width:100%;
+	height:93vh;
+	background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('/assets/onlineShpng.png');
+	background-size:cover;
+	color:white;
+}
+
+.homeImg{
+    height: 90vh;
+    
+}
+
+.example-header-image1{
+    background-image: url("/assets/users.png");
+  background-size: cover;
+}
+
+.example-header-image2{
+    background-image: url("/assets/box.png");
+    background-size: cover;
+}
+
+.example-header-image3{
+    background-image: url("/assets/rating.png");
+    background-size: cover;
+}
+
+.example-header-image4{
+    background-image: url("/assets/brand.png");
+    background-size: cover;
+}
+
+.homeCard{
+    background-color: #EA3680;
+    color: white;
+    font-weight: 900;
+}
+
+.total{
+    padding-top: 104px;
+}

@@ -1,0 +1,27 @@
+<h1 class="ml20 mt10">All Reviews</h1>
+<mat-card class="mt10 mr20 ml20" *ngFor="let r of reviews">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+
+    <mat-card-title> {{ r.reviewTitle }} </mat-card-title>
+    <mat-card-title>Rating: {{ r.rating }}/5</mat-card-title>
+
+    <mat-card-subtitle>{{ r.product.pName }} </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ r.content }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button color="accent" (click)="approveReview(r.reviewId)">
+      Approve
+    </button>
+    <button
+      mat-flat-button
+      color="accent"
+      (click)="deleteReview(r.reviewId)"
+      class="ml10"
+    >
+      Reject
+    </button>
+  </mat-card-actions>
+</mat-card>
